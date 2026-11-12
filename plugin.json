@@ -1,0 +1,46 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "quantum-metric",
+  "version": "0.2.2",
+  "description": "Analyze funnels, errors, friction and session replays in Quantum Metric to find and fix digital experience issues",
+  "author": {
+    "name": "Quantum Metric",
+    "email": "support@quantummetric.com",
+    "url": "https://www.quantummetric.com"
+  },
+  "homepage": "https://www.quantummetric.com",
+  "repository": "https://github.com/quantummetric/qm-plugin-codex",
+  "license": "MIT",
+  "keywords": [
+    "quantum-metric",
+    "analytics",
+    "session-replay",
+    "digital-experience",
+    "funnels",
+    "observability"
+  ],
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "Quantum Metric",
+        "shortDescription": "Quantum Metric analytics",
+        "longDescription": "Analyze funnels, errors, friction and session replays in Quantum Metric to find and fix digital experience issues across web and mobile apps.",
+        "developerName": "Quantum Metric",
+        "category": "Analytics",
+        "capabilities": [
+          "Read"
+        ],
+        "websiteURL": "https://www.quantummetric.com",
+        "privacyPolicyURL": "https://www.quantummetric.com/legal/privacy-policy",
+        "termsOfServiceURL": "https://iam.quantummetric.com/terms-and-conditions",
+        "defaultPrompt": [
+          "Where are customers dropping out of checkout this week?",
+          "What are the top errors affecting conversion right now?",
+          "Review this session and tell me what went wrong."
+        ],
+        "logo": "./logo.png",
+        "composerIcon": "./logo.png"
+      }
+    }
+  }
+}

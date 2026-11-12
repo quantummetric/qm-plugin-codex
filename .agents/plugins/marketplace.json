@@ -1,0 +1,20 @@
+{
+  "name": "quantum-metric",
+  "interface": {
+    "displayName": "Quantum Metric"
+  },
+  "plugins": [
+    {
+      "name": "quantum-metric",
+      "source": {
+        "source": "local",
+        "path": "./"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Analytics"
+    }
+  ]
+}
