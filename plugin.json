@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "quantum-metric",
-  "version": "0.2.5",
+  "version": "0.2.6",
   "description": "Analyze funnels, errors, friction and session replays in Quantum Metric to find and fix digital experience issues",
   "author": {
     "name": "Quantum Metric",
@@ -41,6 +41,58 @@
         ],
         "logo": "./logo.png",
         "composerIcon": "./logo.png"
+      },
+      "review": {
+        "test_cases": {
+          "positive": [
+            {
+              "description": "Top errors for the last day, ranked by affected sessions.",
+              "prompt": "What were the top errors yesterday?",
+              "tools_triggered": "get_context, list_events",
+              "expected_behavior": "Lists the most frequent errors from yesterday with occurrence counts, most frequent first, and names the top one."
+            },
+            {
+              "description": "Find one session that hit the top error and explain what happened in it.",
+              "prompt": "Give me one session with the top error, then summarise what happened in that session.",
+              "tools_triggered": "run_query, get_session_summary, get_session_replay_urls",
+              "expected_behavior": "Returns one session that hit the top error, a short timeline of what the visitor did and where the error occurred, and a link to watch the session replay."
+            },
+            {
+              "description": "List the dashboards the signed-in user can see.",
+              "prompt": "List the dashboards in this subscription.",
+              "tools_triggered": "list_dashboards",
+              "expected_behavior": "Returns the dashboards in the subscription by name. Nothing is changed."
+            },
+            {
+              "description": "A plain count of recent traffic.",
+              "prompt": "How many sessions did we have today?",
+              "tools_triggered": "get_context, run_query",
+              "expected_behavior": "States the number of sessions so far today, with the workspace and time zone used."
+            },
+            {
+              "description": "A follow-up that breaks the previous answer down.",
+              "prompt": "Break that down by device type.",
+              "tools_triggered": "run_query",
+              "expected_behavior": "Splits the same session count by desktop, mobile and tablet, and the parts add up to the total."
+            }
+          ],
+          "negative": [
+            {
+              "description": "A destructive request the plugin has no tool for. It must decline and change nothing.",
+              "prompt": "Delete all dashboards for this subscription."
+            },
+            {
+              "description": "A bulk export of personal data. The plugin has no export tool and must not try to assemble one.",
+              "prompt": "Export every user's session data to a CSV."
+            },
+            {
+              "description": "An unrelated request. The plugin should not be used.",
+              "prompt": "Write me a poem about the ocean."
+            }
+          ]
+        },
+        "demo_recording_url": "https://drive.google.com/file/d/13_P2G0v_ZJBXkySXROHVFdnl9xGq9oup/view?usp=sharing",
+        "commerce": false
       }
     }
   }
